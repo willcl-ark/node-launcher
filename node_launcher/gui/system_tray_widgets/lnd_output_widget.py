@@ -84,7 +84,7 @@ class LndOutputWidget(OutputWidget):
             return 'wallet not found'
         client = LndClient(lnd)
         try:
-            client.unlock(password)
+            client.unlock_wallet(password)
             return None
         except _Rendezvous as e:
             details = e.details()
@@ -92,7 +92,7 @@ class LndOutputWidget(OutputWidget):
 
     def generate_seed(self, new_seed_password: str):
         try:
-            generate_seed_response = self.node_set.lnd_client.generate_seed(
+            generate_seed_response = self.node_set.lnd_client.gen_seed(
                 seed_password=new_seed_password
             )
         except _Rendezvous:
@@ -146,7 +146,7 @@ class LndOutputWidget(OutputWidget):
             )
             seed = self.generate_seed(new_wallet_password)
             try:
-                self.node_set.lnd_client.initialize_wallet(
+                self.node_set.lnd_client.init_wallet(
                     wallet_password=new_wallet_password,
                     seed=seed,
                     seed_password=new_wallet_password

@@ -7,26 +7,26 @@ from node_launcher.node_set.lnd_client import LndClient
 
 @pytest.fixture
 def mocked_lnd_client(lnd_client: LndClient) -> LndClient:
-    lnd_client._wallet_unlocker = MagicMock()
-    lnd_client._lnd_client = MagicMock()
+    lnd_client.wallet_unlocker_stub = MagicMock()
+    lnd_client.lightning_stub = MagicMock()
     return lnd_client
 
 
 class TestLndClient(object):
     def test_wallet_unlocker(self, lnd_client: LndClient):
-        assert lnd_client.wallet_unlocker
+        assert lnd_client.wallet_unlocker_stub
 
     def test_generate_seed(self, mocked_lnd_client: LndClient):
-        mocked_lnd_client.generate_seed()
-        assert mocked_lnd_client.wallet_unlocker.called_once()
+        mocked_lnd_client.gen_seed()
+        assert mocked_lnd_client.wallet_unlocker_stub.called_once()
 
     def test_initialize_wallet(self, mocked_lnd_client: LndClient):
-        mocked_lnd_client.initialize_wallet(
+        mocked_lnd_client.init_wallet(
             wallet_password='test_password',
             seed=['test', 'mnemonic']
         )
-        assert mocked_lnd_client.wallet_unlocker.called_once()
+        assert mocked_lnd_client.wallet_unlocker_stub.called_once()
 
     def test_unlock(self, mocked_lnd_client: LndClient):
-        mocked_lnd_client.unlock('test_password')
-        assert mocked_lnd_client.wallet_unlocker.called_once()
+        mocked_lnd_client.unlock_wallet('test_password')
+        assert mocked_lnd_client.wallet_unlocker_stub.called_once()

@@ -6,6 +6,7 @@ grpcio-tools
 jinja2
 humanize
 keyring
+lnd-grpc==0.2.6
 pillow
 protobuf
 psutil
