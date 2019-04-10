@@ -7,8 +7,12 @@ from node_launcher.node_set.lnd_client import LndClient
 
 @pytest.fixture
 def mocked_lnd_client(lnd_client: LndClient) -> LndClient:
-    lnd_client.wallet_unlocker_stub = MagicMock()
-    lnd_client.lightning_stub = MagicMock()
+    # generate initial stubs because they are @properties in lnd_grpc
+    _t1 = lnd_client.lightning_stub
+    _t2 = lnd_client.wallet_unlocker_stub
+    # mock the hidden stubs
+    lnd_client._w_stub = MagicMock()
+    lnd_client._lightning_stub = MagicMock()
     return lnd_client
 
 
