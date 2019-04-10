@@ -1,4 +1,4 @@
-from node_launcher.constants import TARGET_LND_RELEASE, OPERATING_SYSTEM
+from node_launcher.constants import TARGET_LOOP_RELEASE, OPERATING_SYSTEM
 from node_launcher.services.node_software import NodeSoftwareABC
 
 
@@ -8,7 +8,7 @@ class LoopSoftware(NodeSoftwareABC):
         super().__init__(override_directory)
         self.github_team = 'lightninglabs'
         self.github_repo = 'loop'
-        self.release_version = TARGET_LND_RELEASE
+        self.release_version = TARGET_LOOP_RELEASE
 
     @property
     def lnd(self) -> str:
@@ -20,7 +20,7 @@ class LoopSoftware(NodeSoftwareABC):
 
     @property
     def download_name(self) -> str:
-        return f'lnd-{OPERATING_SYSTEM}-amd64-{self.release_version}'
+        return f'loop-{OPERATING_SYSTEM}-amd64-{self.release_version}'
 
     @property
     def uncompressed_directory_name(self) -> str:
