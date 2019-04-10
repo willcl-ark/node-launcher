@@ -116,6 +116,8 @@ LND_DEFAULT_PEER_PORT = 9735
 LND_DEFAULT_GRPC_PORT = 10009
 LND_DEFAULT_REST_PORT = 8080
 
+LOOP_DEFAULT_GRPC_PORT = 11010
+
 LNCLI_COMMANDS = [
     'abandonchannel',
     'addinvoice',
@@ -228,4 +230,12 @@ BITCOIN_CLI_COMMANDS = [
     'verifychain',
     'verifymessage',
     'verifytxoutproof'
+]
+
+LOOP_COMMANDS = [
+    'help',
+    'monitor',
+    'out',
+    'quote',
+    'terms'
 ]

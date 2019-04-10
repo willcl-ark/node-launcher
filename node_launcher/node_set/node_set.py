@@ -3,16 +3,17 @@ import os
 from node_launcher.logging import log
 from node_launcher.node_set.bitcoin import Bitcoin
 from node_launcher.node_set.lnd import Lnd
+from node_launcher.node_set.lnd_client import LndClient, LoopClient
 from node_launcher.constants import (
     BITCOIN_DATA_PATH,
     LND_DIR_PATH,
     OPERATING_SYSTEM,
 )
-from node_launcher.node_set.lnd_client import LndClient
 
 
 class NodeSet(object):
     lnd_client: LndClient
+    loop: LoopClient
     bitcoin: Bitcoin
     lnd: Lnd
 
@@ -41,6 +42,7 @@ class NodeSet(object):
             bitcoin=self.bitcoin
         )
         self.lnd_client = LndClient(self.lnd)
+        self.loop_client = LoopClient()
 
     @property
     def is_testnet(self) -> bool:
