@@ -50,8 +50,6 @@ class NodeSet(object):
     def is_mainnet(self) -> bool:
         return not self.bitcoin.file['testnet']
 
-    # TODO: this seems to require some action, should it be self.lnd.process.terminate() like in
-    #   gui > application.py ?
     def reset_tls(self):
         was_running = self.lnd.running
         if was_running:
