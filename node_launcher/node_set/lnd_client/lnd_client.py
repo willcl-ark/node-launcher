@@ -1,3 +1,4 @@
+import codecs
 import os
 from typing import List
 
@@ -30,8 +31,8 @@ class LndClient(Client):
     def __init__(self,
                  lnd=None,
                  lnddir: str = None,
-                 grpc_port: int = None,
-                 grpc_host: str = None,
+                 grpc_port: int = '10009',
+                 grpc_host: str = 'localhost',
                  macaroon_path: str = None):
         super().__init__(lnd_dir=lnddir,
                          macaroon_path=macaroon_path,
