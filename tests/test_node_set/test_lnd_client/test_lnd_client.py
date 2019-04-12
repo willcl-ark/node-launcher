@@ -27,7 +27,7 @@ class TestLndClient(object):
     def test_initialize_wallet(self, mocked_lnd_client: LndClient):
         mocked_lnd_client.init_wallet(
             wallet_password='test_password',
-            seed=['test', 'mnemonic']
+                cipher_seed_mnemonic=['test', 'mnemonic']
         )
         assert mocked_lnd_client.wallet_unlocker_stub.called_once()
 
