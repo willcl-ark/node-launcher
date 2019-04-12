@@ -4,7 +4,7 @@ from typing import List
 # noinspection PyPackageRequirements
 # noinspection PyProtectedMember,PyPackageRequirements
 from google.protobuf.json_format import MessageToDict
-from lnd_grpc.lnd_grpc import *
+from lnd_grpc.lnd_grpc import Client, ln, lnrpc
 
 from node_launcher.logging import log
 
